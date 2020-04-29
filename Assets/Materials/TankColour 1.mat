@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TankColour
+  m_Name: TankColour 1
   m_Shader: {fileID: -6465566751694194690, guid: 6abcdf5b68d59418f9366851fac68bf4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
@@ -92,8 +92,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_675D8F6: {r: 0.25454426, g: 0.8113207, b: 0.16456026, a: 0}
-    - Color_E8C77A3C: {r: 0.11854753, g: 0.6792453, b: 0.2964241, a: 0}
+    - Color_675D8F6: {r: 0.8117647, g: 0.16470589, b: 0.73077404, a: 0}
+    - Color_E8C77A3C: {r: 1, g: 0.2783019, b: 0.80802125, a: 0}
     - _BaseColor: {r: 0.49381077, g: 0.8088235, b: 0.24978366, a: 1}
     - _Color: {r: 0.49381077, g: 0.8088235, b: 0.24978374, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

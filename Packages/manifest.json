@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.unity.cinemachine": "2.5.0",
     "com.unity.dots.editor": "0.5.0-preview",
     "com.unity.entities": "0.9.1-preview.15",
     "com.unity.ide.rider": "1.2.1",
