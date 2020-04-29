@@ -12,6 +12,7 @@ public class TankAuthoring : MonoBehaviour, IConvertGameObjectToEntity, IDeclare
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
+		dstManager.AddComponentData(entity, new Inputs());
 		dstManager.AddComponentData(entity, new Speed {Value = speed});
         dstManager.AddComponentData(entity, new Velocity());
 

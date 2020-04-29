@@ -58,7 +58,7 @@ public class @GameControls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""WASD"",
                     ""id"": ""f0697d76-0271-4c3c-ae51-e578a2ec840e"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -113,7 +113,7 @@ public class @GameControls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Arrow Keys"",
                     ""id"": ""536486ac-b684-46d3-9e76-5e5706c48f03"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

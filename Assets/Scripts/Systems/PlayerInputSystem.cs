@@ -24,7 +24,9 @@ public class PlayerInputSystem : SystemBase
 		float2 mousePositionInput = input.mousePositionInput;
 		bool fireInput = input.fireInput;
 
-		Entities.ForEach((ref Inputs playerInput) =>
+		Entities
+		.WithAll<PlayerTag>()
+		.ForEach((ref Inputs playerInput) =>
 		{
 			playerInput.Movement = moveInput;
 			playerInput.Pointer = mousePositionInput;
