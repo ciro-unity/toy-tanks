@@ -3,7 +3,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 
-public struct PlayerInput : IComponentData
+public struct Inputs : IComponentData
 {
 	public float2 Movement;
 	public float2 Pointer;
@@ -12,20 +12,20 @@ public struct PlayerInput : IComponentData
 
 public struct Velocity : IComponentData
 {
-    public float2 Value;
-}
-
-public struct BodyRotation : IComponentData
-{
-    public int Value;
-}
-
-public struct TurretRotation : IComponentData
-{
-    public int Value;
+    public float Value;
 }
 
 public struct Speed : IComponentData
+{
+    public float Value;
+}
+
+public struct FireCooldown : IComponentData
+{
+    public float Value;
+}
+
+public struct FireInterval : IComponentData
 {
     public float Value;
 }

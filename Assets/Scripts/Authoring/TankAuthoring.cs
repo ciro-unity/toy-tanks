@@ -12,11 +12,8 @@ public class TankAuthoring : MonoBehaviour, IConvertGameObjectToEntity, IDeclare
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
-		dstManager.AddComponentData(entity, new Speed{Value = speed});
+		dstManager.AddComponentData(entity, new Speed {Value = speed});
         dstManager.AddComponentData(entity, new Velocity());
-
-		dstManager.AddComponentData(entity, new BodyRotation());
-		dstManager.AddComponentData(entity, new TurretRotation());
 
 		//store a reference to the entity which represents the projectile Prefab
 		dstManager.AddComponentData(entity, new Projectile{Reference = conversionSystem.GetPrimaryEntity(projectilePrefab)});
