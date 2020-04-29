@@ -34,7 +34,3 @@ public struct Projectile : IComponentData
 {
     public Entity Reference;
 }
-
-public struct PlayerTag : IComponentData { }
-
-public struct EnemyTag : IComponentData { }

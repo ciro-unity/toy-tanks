@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &5735514869032969666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8326243584017890553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2211a62e1143e4b22a872185fc157ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  projectilePrefab: {fileID: 3771424332323638085, guid: 9fdf6b1b06e9d4672a53a74ad134be50, type: 3}
+--- !u!1 &8955686641450383431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1008993536907421094}
+  m_Layer: 0
+  m_Name: ProjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1008993536907421094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955686641450383431}
+  m_LocalRotation: {x: -7.1054274e-15, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.503, z: 0.662}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3655442414498570350}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &48747374365746672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75,9 +119,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
+    - target: {fileID: -750508513845307388, guid: 493e4fe077be9406db7e07f92a256840, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 29c986f1a06e14636a3149153dc0b0d9, type: 2}
     - target: {fileID: 7447292361838111801, guid: 493e4fe077be9406db7e07f92a256840, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 29c986f1a06e14636a3149153dc0b0d9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 493e4fe077be9406db7e07f92a256840, type: 3}
+--- !u!1 &8326243584017890553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 493e4fe077be9406db7e07f92a256840, type: 3}
+  m_PrefabInstance: {fileID: 48747374365746672}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3655442414498570350 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5613856813526497890, guid: 493e4fe077be9406db7e07f92a256840, type: 3}
+  m_PrefabInstance: {fileID: 48747374365746672}
+  m_PrefabAsset: {fileID: 0}
