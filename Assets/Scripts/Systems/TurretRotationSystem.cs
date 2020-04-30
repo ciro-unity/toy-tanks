@@ -10,10 +10,15 @@ public class TurretRotationSystem : SystemBase
 	protected override void OnUpdate()
 	{
 		Entities
-		.ForEach((ref Rotation rotation, ref Translation translation, ref LocalToWorld localToWorld, in TurretInput input) =>
+		.ForEach((ref Rotation rotation, ref Translation translation, in LocalToWorld localToWorld, in TurretInput input) =>
 		{
 			float3 worldTarget = new float3(input.Target.x, 0f, input.Target.y);
-			float3 dir = math.normalize(worldTarget - localToWorld.Position);
+			float3 worldPos = new float3(localToWorld.Position.x, 0f, localToWorld.Position.z);
+
+			//calculate world direction
+			float3 dir = math.normalize(worldTarget - worldPos);
+
+			//TODO: convert it to local!
 
 			rotation.Value = quaternion.LookRotation(dir, math.up());
 		}).Schedule();
