@@ -26,10 +26,16 @@ public class PlayerInputSystem : SystemBase
 
 		Entities
 		.WithAll<PlayerTag>()
-		.ForEach((ref Inputs playerInput) =>
+		.ForEach((ref BodyInput playerInput) =>
 		{
 			playerInput.Movement = moveInput;
-			playerInput.Pointer = mousePositionInput;
+		}).Run();
+
+		Entities
+		.WithAll<PlayerTag>()
+		.ForEach((ref TurretInput playerInput) =>
+		{
+			playerInput.Target = mousePositionInput;
 			playerInput.Fire = fireInput;
 		}).Run();
 	}

@@ -3,10 +3,14 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 
-public struct Inputs : IComponentData
+public struct BodyInput : IComponentData
 {
 	public float2 Movement;
-	public float2 Pointer;
+}
+
+public struct TurretInput : IComponentData
+{
+	public float2 Target;
 	public bool Fire;
 }
 
@@ -30,7 +34,7 @@ public struct FireInterval : IComponentData
     public float Value;
 }
 
-public struct Projectile : IComponentData
+public struct ProjectilePrefab : IComponentData
 {
     public Entity Reference;
 }
