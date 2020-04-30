@@ -8,10 +8,13 @@ using UnityEngine;
 public class TurretAuthoring : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs
 {
 	public GameObject projectilePrefab;
+	public float fireInterval = 1f;
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
-		dstManager.AddComponentData(entity, new TurretInput());
+		dstManager.AddComponent<TurretInput>(entity);
+		dstManager.AddComponentData(entity, new FireInterval{Value = fireInterval});
+		dstManager.AddComponent<FireCooldown>(entity);
 
 		//store a reference to the entity which represents the projectile Prefab
 		dstManager.AddComponentData(entity, new ProjectilePrefab{Reference = conversionSystem.GetPrimaryEntity(projectilePrefab)});
