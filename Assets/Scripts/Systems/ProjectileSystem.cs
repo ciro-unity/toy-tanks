@@ -9,11 +9,13 @@ public class ProjectileSystem : SystemBase
 {
 	protected override void OnUpdate()
 	{
+		float deltaTime = Time.DeltaTime;
+
 		Entities
 		.WithAll<ProjectileTag>()
 		.ForEach((ref Translation translation, in LocalToWorld localToWorld) =>
 		{
-			translation.Value += localToWorld.Forward * Time.DeltaTime;
+			translation.Value += localToWorld.Forward * deltaTime;
 		}).ScheduleParallel();
 	}
 }
