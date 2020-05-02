@@ -38,3 +38,9 @@ public struct ProjectilePrefab : IComponentData
 {
     public Entity Reference;
 }
+
+public struct ProjectileSpawnPoint : IComponentData
+{
+	public float3 LocalTranslation;
+	public quaternion LocalRotation;
+}

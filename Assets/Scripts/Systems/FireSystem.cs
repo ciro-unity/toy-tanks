@@ -11,7 +11,7 @@ public class FireSystem : SystemBase
 	{
 		Entities
 		.WithStructuralChanges()
-		.ForEach((ref TurretInput input, ref FireCooldown fireCooldown, in FireInterval fireInterval, in LocalToWorld localToWorld, in ProjectilePrefab projectilePrefab) =>
+		.ForEach((ref TurretInput input, ref FireCooldown fireCooldown, in Rotation rotation, in FireInterval fireInterval, in LocalToWorld localToWorld, in ProjectilePrefab projectilePrefab, in ProjectileSpawnPoint spawnPointData) =>
 		{
 			//decrease the cooldown
 			if(fireCooldown.Value > 0f)
@@ -24,7 +24,10 @@ public class FireSystem : SystemBase
 			{
 				//fire!
 				Entity newProjectile = EntityManager.Instantiate(projectilePrefab.Reference);
-				EntityManager.SetComponentData(newProjectile, new Translation{Value = localToWorld.Position}); //TODO fix position
+				EntityManager.SetComponentData(newProjectile, new Translation{Value = math.transform(localToWorld.Value, spawnPointData.LocalTranslation)});
+				EntityManager.SetComponentData(newProjectile, new Rotation{Value = math.mul(localToWorld.Rotation, spawnPointData.LocalRotation)});
+
+				fireCooldown.Value = fireInterval.Value;
 			}
 		}).Run();
 	}
