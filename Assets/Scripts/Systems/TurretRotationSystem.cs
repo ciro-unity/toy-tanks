@@ -5,7 +5,7 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
 
-[UpdateBefore(typeof(TransformSystemGroup))]
+[UpdateAfter(typeof(TransformSystemGroup))]
 public class TurretRotationSystem : SystemBase
 {
 	protected override void OnUpdate()
@@ -19,10 +19,12 @@ public class TurretRotationSystem : SystemBase
 			//calculate world direction
 			float3 dir = math.normalize(worldTarget - worldPos);
 
-			LocalToWorld parentLTW = GetComponent<LocalToWorld>(parent.Value); //random memory access!
-
 			quaternion worldRot = quaternion.LookRotationSafe(dir, math.up());
-			quaternion localRot = math.mul(math.inverse(new quaternion(parentLTW.Value)), worldRot);
+
+			var parentLocalToWorld = GetComponent<LocalToWorld>(parent.Value);
+			var parentRot = parentLocalToWorld.Rotation;
+			var localRot = math.mul(math.inverse(parentRot), worldRot);
+
 			rotation.Value = localRot;
 		}).Schedule();
 	}
