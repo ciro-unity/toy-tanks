@@ -4,7 +4,9 @@ using Unity.Entities;
 using Unity.Transforms;
 using Unity.Jobs;
 using Unity.Mathematics;
+using Unity.Physics;
 
+[DisableAutoCreation]
 public class ProjectileSystem : SystemBase
 {
 	protected override void OnUpdate()
@@ -13,9 +15,10 @@ public class ProjectileSystem : SystemBase
 
 		Entities
 		.WithAll<ProjectileTag>()
-		.ForEach((ref Translation translation, in LocalToWorld localToWorld) =>
+		.ForEach((ref Translation translation, ref Rotation rotation, ref PhysicsVelocity physicVelocity, in LocalToWorld localToWorld, in MovementSpeed speed) =>
 		{
-			translation.Value += localToWorld.Forward * deltaTime;
+			physicVelocity.Linear = localToWorld.Forward * speed.Value * deltaTime * 40f;
+			//rotation.Value = math.mul(rotation.Value, quaternion.RotateX(.003f));
 		}).ScheduleParallel();
 	}
 }

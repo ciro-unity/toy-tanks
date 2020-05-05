@@ -14,14 +14,14 @@ public class TankMovementSystem : SystemBase
 		float deltaTime = Time.DeltaTime;
 		
 		Entities
-		.ForEach((ref Velocity velocity, ref Translation translation, ref Rotation rotation, in BodyInput input, in Speed targetSpeed) =>
+		.ForEach((ref Velocity velocity, ref Translation translation, ref Rotation rotation, in BodyInput input, in MovementSpeed movementSpeed, in RotationSpeed rotationSpeed) =>
 		{
 			//movement speed builds up in time, and is also reduced if the player lets go of the controls
-			velocity.Value = math.min((velocity.Value * .9f) + input.Movement.y, targetSpeed.Value);
+			velocity.Value = math.clamp((velocity.Value * .9f) + input.Movement.y, -movementSpeed.Value, movementSpeed.Value);
 			translation.Value = translation.Value + (math.forward(rotation.Value) * velocity.Value * deltaTime);
 
 			//fixed rotation value
-			rotation.Value = math.mul(math.normalize(rotation.Value), quaternion.AxisAngle(math.up(), input.Movement.x * 3f * deltaTime));
+			rotation.Value = math.mul(math.normalize(rotation.Value), quaternion.AxisAngle(math.up(), input.Movement.x * rotationSpeed.Value * deltaTime));
 		}).Schedule();
 	}
 }

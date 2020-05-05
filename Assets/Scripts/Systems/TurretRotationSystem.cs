@@ -21,9 +21,9 @@ public class TurretRotationSystem : SystemBase
 
 			quaternion worldRot = quaternion.LookRotationSafe(dir, math.up());
 
-			var parentLocalToWorld = GetComponent<LocalToWorld>(parent.Value);
-			var parentRot = parentLocalToWorld.Rotation;
-			var localRot = math.mul(math.inverse(parentRot), worldRot);
+			LocalToWorld parentLocalToWorld = GetComponent<LocalToWorld>(parent.Value);
+			quaternion parentRot = parentLocalToWorld.Rotation;
+			quaternion localRot = math.mul(math.inverse(parentRot), worldRot);
 
 			rotation.Value = localRot;
 		}).Schedule();

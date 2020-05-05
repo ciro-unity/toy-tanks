@@ -19,9 +19,14 @@ public struct Velocity : IComponentData
     public float Value;
 }
 
-public struct Speed : IComponentData
+public struct MovementSpeed : IComponentData
 {
     public float Value;
+}
+
+public struct RotationSpeed : IComponentData
+{
+	public float Value;
 }
 
 public struct FireCooldown : IComponentData

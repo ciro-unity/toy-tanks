@@ -9,7 +9,7 @@ public class TurretAuthoring : MonoBehaviour, IConvertGameObjectToEntity, IDecla
 {
 	public GameObject projectilePrefab;
 	public Transform projectileSpawnPoint;
-	public float fireInterval = 1f;
+	[Range(.2f, 1f)] public float fireInterval = 1f;
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {

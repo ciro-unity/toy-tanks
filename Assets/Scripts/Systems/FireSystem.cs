@@ -4,6 +4,7 @@ using Unity.Entities;
 using Unity.Transforms;
 using Unity.Jobs;
 using Unity.Mathematics;
+using Unity.Physics;
 
 public class FireSystem : SystemBase
 {
@@ -26,6 +27,7 @@ public class FireSystem : SystemBase
 				Entity newProjectile = EntityManager.Instantiate(projectilePrefab.Reference);
 				EntityManager.SetComponentData(newProjectile, new Translation{Value = math.transform(localToWorld.Value, spawnPointData.LocalTranslation)});
 				EntityManager.SetComponentData(newProjectile, new Rotation{Value = math.mul(localToWorld.Rotation, spawnPointData.LocalRotation)});
+				EntityManager.SetComponentData(newProjectile, new PhysicsVelocity{Linear = 20f * math.forward(math.mul(localToWorld.Rotation, spawnPointData.LocalRotation))});
 
 				fireCooldown.Value = fireInterval.Value;
 			}
