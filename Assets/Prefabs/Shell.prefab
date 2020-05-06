@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1468917159748714051
+--- !u!114 &-8538508781496170478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3771424332323638085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9a3d76dbd50478eab36a73db4180f0, type: 3}
+  m_Script: {fileID: 11500000, guid: cec1be87203b24bcca53ff7281bed1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
 --- !u!114 &3633294097529053514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MotionType: 0
   m_Mass: 20
-  m_LinearDamping: 0.01
+  m_LinearDamping: 0.001
   m_AngularDamping: 0.05
   m_InitialLinearVelocity:
     x: 0
@@ -110,7 +109,7 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  m_GravityFactor: 1
+  m_GravityFactor: 0.1
   m_OverrideDefaultMassDistribution: 0
   m_CenterOfMass:
     x: 0

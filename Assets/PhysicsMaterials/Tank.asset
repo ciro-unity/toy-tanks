@@ -36,7 +36,7 @@ MonoBehaviour:
       m_Value: 0101010101010101010101010101010101010101010101010101010101010101
     m_RaisesCollisionEvents:
       m_Override: 1
-      m_Value: 0
+      m_Value: 1
     m_CustomTags:
       m_Override: 1
       m_Value: 0000000000000000

@@ -47,28 +47,17 @@ public class CollisionSystem : JobComponentSystem
         //This function will be called every time there is a trigger collision in the game
         public void Execute(TriggerEvent triggerEvent)
         {
-			//TODO: Allow the destruction of the player
-			
 			Entity entityA = triggerEvent.Entities.EntityA;
 			Entity entityB = triggerEvent.Entities.EntityB;
 
-			//check which is which
-            if (enemiesGroup.HasComponent(entityA))
-            {
-                if (projectilesGroup.HasComponent(entityB))
-                {
-					 ECB.DestroyEntity(entityA);
-					 ECB.DestroyEntity(entityB);
-                }
-            }
-			else if (enemiesGroup.HasComponent(triggerEvent.Entities.EntityB))
-            {
-                if (projectilesGroup.HasComponent(triggerEvent.Entities.EntityA))
-                {
-					 ECB.DestroyEntity(entityA);
-					 ECB.DestroyEntity(entityB);
-                }
-            }
+			if(projectilesGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA);
+			if(projectilesGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB);
+
+			if(playersGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA);
+			if(playersGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB);
+
+			if(enemiesGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA);
+			if(enemiesGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB);
         }
     }
 

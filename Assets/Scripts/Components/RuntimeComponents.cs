@@ -54,3 +54,18 @@ public struct ProjectileSpawnPoint : IComponentData
 	public float3 LocalTranslation;
 	public quaternion LocalRotation;
 }
+
+public struct PathMovement : IComponentData
+{
+	public int CurrentTargetWaypoint;
+}
+
+public struct Path : IComponentData
+{
+	public bool IsLooping;
+}
+
+public struct Waypoint : IBufferElementData
+{
+	public float3 Position;
+}
