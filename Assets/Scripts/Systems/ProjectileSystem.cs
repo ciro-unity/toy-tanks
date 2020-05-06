@@ -18,7 +18,6 @@ public class ProjectileSystem : SystemBase
 		.ForEach((ref Translation translation, ref Rotation rotation, ref PhysicsVelocity physicVelocity, in LocalToWorld localToWorld, in MovementSpeed speed) =>
 		{
 			physicVelocity.Linear = localToWorld.Forward * speed.Value * deltaTime * 40f;
-			//rotation.Value = math.mul(rotation.Value, quaternion.RotateX(.003f));
 		}).ScheduleParallel();
 	}
 }

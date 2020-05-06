@@ -16,5 +16,9 @@ public class TankAuthoring : MonoBehaviour, IConvertGameObjectToEntity
 		dstManager.AddComponentData(entity, new MovementSpeed {Value = movementSpeed});
 		dstManager.AddComponentData(entity, new RotationSpeed {Value = rotationSpeed});
         dstManager.AddComponentData(entity, new Velocity());
+
+		//we will use this when destroying the tank: upon destruction of the base Entity,
+		//all of the Entities in the LinkedEntityGroup buffer will be destroyed too
+		conversionSystem.DeclareLinkedEntityGroup(gameObject);
     }
 }

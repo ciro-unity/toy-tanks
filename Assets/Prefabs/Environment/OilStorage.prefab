@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7699254403569249067}
   - component: {fileID: 7699254403570557181}
   - component: {fileID: 7699254403571217277}
-  - component: {fileID: 7699254403576828869}
   - component: {fileID: 7699254403580912635}
   m_Layer: 0
   m_Name: OilStorage
@@ -84,25 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &7699254403576828869
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7699254403569517007}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: e307cb54b57a59342868ad47d1ed0c30, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!136 &7699254403580912635
 CapsuleCollider:
   m_ObjectHideFlags: 0

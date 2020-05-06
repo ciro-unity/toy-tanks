@@ -39,6 +39,11 @@ public struct FireInterval : IComponentData
     public float Value;
 }
 
+public struct FireSpeed : IComponentData
+{
+    public float Value;
+}
+
 public struct ProjectilePrefab : IComponentData
 {
     public Entity Reference;

@@ -19,6 +19,8 @@ public class AIInputSystem : SystemBase
 			float3 worldSpacePoint = translation.Value + velocity.Value * dt;
 			desiredTarget = new float2(worldSpacePoint.x, worldSpacePoint.z);
 		}).Run();
+		//TODO: transform the above in RunParallel
+		
 
 		//let all AI tanks use the position as their target
 		Entities
@@ -26,6 +28,7 @@ public class AIInputSystem : SystemBase
 		.ForEach((ref TurretInput input) =>
 		{
 			input.Target = desiredTarget;
-		}).Run();
+			input.Fire = true;
+		}).ScheduleParallel();
 	}
 }

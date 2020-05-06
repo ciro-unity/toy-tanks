@@ -14,7 +14,7 @@ public class AIInputMockSystem : SystemBase
 		.ForEach((ref BodyInput input) =>
 		{
 			input.Movement = new float2(.5f, .1f); //mock data
-		}).Run();
+		}).ScheduleParallel();
 
 		Entities
 		.WithAll<EnemyTag>()
@@ -22,6 +22,6 @@ public class AIInputMockSystem : SystemBase
 		{
 			input.Target = new float2(0f, 0f); //mock data
 			input.Fire = false;
-		}).Run();
+		}).ScheduleParallel();
 	}
 }

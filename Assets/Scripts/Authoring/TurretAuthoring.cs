@@ -10,12 +10,14 @@ public class TurretAuthoring : MonoBehaviour, IConvertGameObjectToEntity, IDecla
 	public GameObject projectilePrefab;
 	public Transform projectileSpawnPoint;
 	[Range(.2f, 1f)] public float fireInterval = 1f;
+	[Range(10f, 30f)] public float fireSpeed = 20f;
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
 		dstManager.AddComponent<TurretInput>(entity);
 		dstManager.AddComponentData(entity, new FireInterval{Value = fireInterval});
 		dstManager.AddComponent<FireCooldown>(entity);
+		dstManager.AddComponentData(entity, new FireSpeed{Value = fireSpeed});
 
 		//store a reference to the entity which represents the projectile Prefab
 		dstManager.AddComponentData(entity, new ProjectilePrefab{Reference = conversionSystem.GetPrimaryEntity(projectilePrefab)});
