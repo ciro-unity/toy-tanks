@@ -29,7 +29,7 @@ public class PlayerInputSystem : SystemBase
 		.ForEach((ref BodyInput playerInput) =>
 		{
 			playerInput.Movement = moveInput;
-		}).Run();
+		}).Schedule();
 
 		Entities
 		.WithAll<PlayerTag>()
@@ -37,6 +37,6 @@ public class PlayerInputSystem : SystemBase
 		{
 			playerInput.Target = mousePositionInput;
 			playerInput.Fire = fireInput;
-		}).Run();
+		}).Schedule();
 	}
 }

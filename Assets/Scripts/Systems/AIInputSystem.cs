@@ -4,31 +4,60 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 public class AIInputSystem : SystemBase
 {
-	protected override void OnUpdate()
-	{
-		float2 desiredTarget = float2.zero;
-		float dt = Time.DeltaTime;
+    private EntityQuery m_PlayerQuery;
 
-		//find the player entity and compute its intended position for this frame
-		Entities.WithAll<PlayerTag, BodyInput>()
-		.ForEach((in Translation translation, in Velocity velocity) =>
-		{
-			float3 worldSpacePoint = translation.Value + velocity.Value * dt;
-			desiredTarget = new float2(worldSpacePoint.x, worldSpacePoint.z);
-		}).Run();
-		//TODO: transform the above in RunParallel
-		
+    struct PosVel
+    {
+        public float2 pos;
+        public float2 vel;
+    }
 
-		//let all AI tanks use the position as their target
-		Entities
-		.WithAll<EnemyTag>()
-		.ForEach((ref TurretInput input) =>
-		{
-			input.Target = desiredTarget;
-			input.Fire = true;
-		}).ScheduleParallel();
-	}
+    protected override void OnUpdate()
+    {
+        // aim 30 frames ahead, assume 60hz to avoid jitter
+        float dt = .5f;
+
+        var targetCount = m_PlayerQuery.CalculateEntityCount();
+
+        if (targetCount > 0)
+        {
+            var targets = new NativeArray<PosVel>(targetCount, Allocator.TempJob);
+
+            //find the player entity and compute its intended position for this frame
+            Entities
+                .WithAll<PlayerTag, BodyInput>()
+                .WithStoreEntityQueryInField(ref m_PlayerQuery)
+                .ForEach((int entityInQueryIndex, in Translation translation, in Rotation rotation, in Velocity velocity) =>
+                {
+                    targets[entityInQueryIndex] = new PosVel
+                    {
+                        pos = translation.Value.xz,
+                        vel = math.forward(rotation.Value).xz * velocity.Value
+                    };
+                }).Schedule();
+
+            //let all AI tanks use the position as their target
+            Entities
+                .WithAll<EnemyTag>()
+                .WithDeallocateOnJobCompletion(targets)
+                .ForEach((ref TurretInput input, in Translation translation) =>
+                {
+                    input.Target = targets[0].pos + targets[0].vel * dt;
+                    input.Fire = true;
+                }).ScheduleParallel();
+        }
+        else
+        {
+            Entities
+                .WithAll<EnemyTag>()
+                .ForEach((ref TurretInput input) =>
+                {
+                    input.Fire = false;
+                }).ScheduleParallel();
+        }
+    }
 }
