@@ -57,11 +57,8 @@ public struct ProjectileSpawnPoint : IComponentData
 
 public struct PathMovement : IComponentData
 {
+	public Entity Path;
 	public int CurrentTargetWaypoint;
-}
-
-public struct Path : IComponentData
-{
 	public bool IsLooping;
 }
 

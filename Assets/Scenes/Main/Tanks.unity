@@ -204,6 +204,57 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392538886}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1000230080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1000230082}
+  - component: {fileID: 1000230081}
+  m_Layer: 0
+  m_Name: Path
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1000230081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000230080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62addec21450424fb490e2627d869a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {x: -12.127939, y: 0, z: 5.163349}
+  - {x: -9.630988, y: 0, z: 19.871826}
+  - {x: 0.31325486, y: 0, z: 17.450708}
+  - {x: 5.9333773, y: 0, z: 16.397532}
+  - {x: 15.788831, y: 0, z: 19.239336}
+  - {x: 19.61838, y: 0, z: 2.5908227}
+  - {x: 14.789615, y: 0, z: -4.077472}
+--- !u!4 &1000230082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000230080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.84, y: 0, z: 7.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1168809994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -217,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 863a70f7b45a642a680290641d13c639, type: 2}
     - target: {fileID: 245397851946662263, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: fireInterval
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4431619250852699057, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_IsActive
@@ -267,13 +318,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5735514869032969666, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
+      propertyPath: movementPath
+      value: 
+      objectReference: {fileID: 1000230081}
     - target: {fileID: 7491517564977842633, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d4f9b71fa8c0c47c5b38fc3d8f9532ed, type: 2}
     - target: {fileID: 8326243584017890553, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_Name
-      value: BadBadTank
+      value: BadTank Path
       objectReference: {fileID: 0}
     - target: {fileID: 8326243584017890553, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_IsActive
@@ -340,7 +395,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 863a70f7b45a642a680290641d13c639, type: 2}
     - target: {fileID: 245397851946662263, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: fireInterval
-      value: 4.27
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 245397851946662263, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
+      propertyPath: fireSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4431619250852699057, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_IsActive
@@ -396,7 +455,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d4f9b71fa8c0c47c5b38fc3d8f9532ed, type: 2}
     - target: {fileID: 8326243584017890553, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_Name
-      value: BadBadTank (1)
+      value: BadTank Stationary
       objectReference: {fileID: 0}
     - target: {fileID: 8326243584017890553, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_IsActive
@@ -457,9 +516,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 245397851946662263, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
-      propertyPath: fireInterval
-      value: 0.2
+    - target: {fileID: 1526490843459699519, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
+      propertyPath: m_PrimitiveSize.z
+      value: 1.9854583
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526490843459699519, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
+      propertyPath: m_Cylinder.Height
+      value: 1.9854583
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526490843459699519, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
+      propertyPath: m_SphereRadius
+      value: 0.9927291
       objectReference: {fileID: 0}
     - target: {fileID: 4399638847838843568, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_LocalRotation.x

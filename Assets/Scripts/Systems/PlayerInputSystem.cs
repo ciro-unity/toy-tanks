@@ -25,18 +25,18 @@ public class PlayerInputSystem : SystemBase
 		bool fireInput = input.fireInput;
 
 		Entities
-		.WithAll<PlayerTag>()
-		.ForEach((ref BodyInput playerInput) =>
-		{
-			playerInput.Movement = moveInput;
-		}).Schedule();
+			.WithAll<PlayerTag>()
+			.ForEach((ref BodyInput playerInput) =>
+			{
+				playerInput.Movement = moveInput;
+			}).Schedule();
 
 		Entities
-		.WithAll<PlayerTag>()
-		.ForEach((ref TurretInput playerInput) =>
-		{
-			playerInput.Target = mousePositionInput;
-			playerInput.Fire = fireInput;
-		}).Schedule();
+			.WithAll<PlayerTag>()
+			.ForEach((ref TurretInput playerInput) =>
+			{
+				playerInput.Target = mousePositionInput;
+				playerInput.Fire = fireInput;
+			}).Schedule();
 	}
 }

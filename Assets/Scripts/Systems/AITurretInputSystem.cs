@@ -6,7 +6,9 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
-public class AIInputSystem : SystemBase
+//Writes the TurretInput for enemy tanks by calculating the player position and adding its velocity
+
+public class AITurretInputSystem : SystemBase
 {
     private EntityQuery m_PlayerQuery;
 
@@ -36,7 +38,7 @@ public class AIInputSystem : SystemBase
                     targets[entityInQueryIndex] = new PosVel
                     {
                         pos = translation.Value.xz,
-                        vel = math.forward(rotation.Value).xz * velocity.Value * 2f
+                        vel = math.forward(rotation.Value).xz * velocity.Value * 2f,
                     };
                 }).ScheduleParallel();
 

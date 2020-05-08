@@ -14,10 +14,10 @@ public class ProjectileSystem : SystemBase
 		float deltaTime = Time.DeltaTime;
 
 		Entities
-		.WithAll<ProjectileTag>()
-		.ForEach((ref Translation translation, ref Rotation rotation, ref PhysicsVelocity physicVelocity, in LocalToWorld localToWorld, in MovementSpeed speed) =>
-		{
-			physicVelocity.Linear = localToWorld.Forward * speed.Value * deltaTime * 40f;
-		}).ScheduleParallel();
+			.WithAll<ProjectileTag>()
+			.ForEach((ref Translation translation, ref Rotation rotation, ref PhysicsVelocity physicVelocity, in LocalToWorld localToWorld, in MovementSpeed speed) =>
+			{
+				physicVelocity.Linear = localToWorld.Forward * speed.Value * deltaTime * 40f;
+			}).ScheduleParallel();
 	}
 }

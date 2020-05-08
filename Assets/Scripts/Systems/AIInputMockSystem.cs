@@ -10,18 +10,18 @@ public class AIInputMockSystem : SystemBase
 	protected override void OnUpdate()
 	{
 		Entities
-		.WithAll<EnemyTag>()
-		.ForEach((ref BodyInput input) =>
-		{
-			input.Movement = new float2(.5f, .1f); //mock data
-		}).ScheduleParallel();
+			.WithAll<EnemyTag>()
+			.ForEach((ref BodyInput input) =>
+			{
+				input.Movement = new float2(.5f, .1f); //mock data
+			}).ScheduleParallel();
 
 		Entities
-		.WithAll<EnemyTag>()
-		.ForEach((ref TurretInput input) =>
-		{
-			input.Target = new float2(0f, 0f); //mock data
-			input.Fire = false;
-		}).ScheduleParallel();
+			.WithAll<EnemyTag>()
+			.ForEach((ref TurretInput input) =>
+			{
+				input.Target = new float2(0f, 0f); //mock data
+				input.Fire = false;
+			}).ScheduleParallel();
 	}
 }
