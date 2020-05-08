@@ -21,7 +21,7 @@ public class AIBodyInputPathSystem : SystemBase
 				float3 nextPosition = waypoints[pathMovement.CurrentTargetWaypoint];
 
 				//check if the waypoint has been reached
-				if(math.lengthsq(translation.Value - nextPosition) < .1f)
+				if(math.lengthsq(translation.Value.xz - nextPosition.xz) < .1f)
 				{
 					//waypoint reached
 					if(pathMovement.CurrentTargetWaypoint == waypoints.Length-1)

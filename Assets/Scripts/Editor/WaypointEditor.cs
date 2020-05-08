@@ -98,7 +98,7 @@ public class PathEditor : Editor
 		Vector3[] wpArray = GetWaypoints();
 
 		Handles.color = new Color32(156, 39, 176, 255);
-		Handles.ArrowCap(0, wpArray[0], Quaternion.LookRotation(wpArray[1]-wpArray[0], Vector3.up), 1f);
+		Handles.ArrowHandleCap(0, wpArray[0], Quaternion.LookRotation(wpArray[1]-wpArray[0], Vector3.up), 1f, EventType.Repaint);
 		for(int i = 0; i<wpArray.Length; i++)
 		{
 			//draw the gizmos
@@ -112,7 +112,7 @@ public class PathEditor : Editor
 			}
 
 			//dotted lines and arrows
-			Handles.SphereCap (0, wpArray[i], Quaternion.identity, .1f);
+			Handles.SphereHandleCap(0, wpArray[i], Quaternion.identity, .1f, EventType.Repaint);
 			if(i<wpArray.Length-1)
 			{
 				Handles.DrawDottedLine(wpArray[i], wpArray[i+1], 5f);

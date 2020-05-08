@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints:
-  - {x: -12.127939, y: 0, z: 5.163349}
+  - {x: -12.979032, y: 0, z: 4.7020645}
   - {x: -9.630988, y: 0, z: 19.871826}
   - {x: 0.31325486, y: 0, z: 17.450708}
   - {x: 5.9333773, y: 0, z: 16.397532}
@@ -550,7 +550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5032662306229849834, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.66
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5032662306229849834, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_LocalPosition.y
@@ -558,7 +558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5032662306229849834, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.98
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 5032662306229849834, guid: a7733acc10edd438b86eef38f2eb8479, type: 3}
       propertyPath: m_LocalRotation.x
