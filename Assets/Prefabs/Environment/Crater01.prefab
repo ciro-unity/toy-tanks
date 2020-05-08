@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1010266241786332092}
   - component: {fileID: 1010266241783028088}
   - component: {fileID: 1010266241784080240}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crater01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

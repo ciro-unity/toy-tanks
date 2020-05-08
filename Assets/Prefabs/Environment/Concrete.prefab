@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4504376478427295739}
   - component: {fileID: 4504376478430733583}
   - component: {fileID: 4504376478429659241}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Concrete
   m_TagString: Untagged
   m_Icon: {fileID: 0}

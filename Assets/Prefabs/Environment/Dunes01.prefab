@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7093705516049808920}
   - component: {fileID: 7093705516048995864}
   - component: {fileID: 7093705516047839732}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dunes01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

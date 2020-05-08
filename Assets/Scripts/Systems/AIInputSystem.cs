@@ -25,7 +25,7 @@ public class AIInputSystem : SystemBase
 
         if (targetCount > 0)
         {
-            var targets = new NativeArray<PosVel>(targetCount, Allocator.TempJob);
+            var targets = new NativeArray<PosVel>(targetCount, Allocator.TempJob); //created as a native array so it can be passed to the job below
 
             //find the player entity and compute its intended position for this frame
             Entities
@@ -36,9 +36,9 @@ public class AIInputSystem : SystemBase
                     targets[entityInQueryIndex] = new PosVel
                     {
                         pos = translation.Value.xz,
-                        vel = math.forward(rotation.Value).xz * velocity.Value
+                        vel = math.forward(rotation.Value).xz * velocity.Value * 2f
                     };
-                }).Schedule();
+                }).ScheduleParallel();
 
             //let all AI tanks use the position as their target
             Entities
