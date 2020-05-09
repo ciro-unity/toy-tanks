@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.guciodevs.simple-min-max-slider": "https://github.com/GucioDevs/SimpleMinMaxSlider.git#upm",
     "com.unity.cinemachine": "2.5.0",
     "com.unity.dots.editor": "0.6.0-preview",
     "com.unity.entities": "0.10.0-preview.6",
@@ -46,5 +47,11 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.guciodevs.simple-min-max-slider": {
+      "revision": "upm",
+      "hash": "46ff35d22982657d55f7861ddc01b115a2db1554"
+    }
   }
 }

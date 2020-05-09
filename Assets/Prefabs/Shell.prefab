@@ -12,6 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec1be87203b24bcca53ff7281bed1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3031730733765194567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771424332323638085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e07606dadac44ed69b1f016b53cc346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creationParticleEffect: {fileID: 5563360638608506097, guid: 676be51273dbf4df9bf334a54557175d, type: 3}
+  destructionParticleEffect: {fileID: 5563360638608506097, guid: 676be51273dbf4df9bf334a54557175d, type: 3}
 --- !u!114 &3633294097529053514
 MonoBehaviour:
   m_ObjectHideFlags: 0

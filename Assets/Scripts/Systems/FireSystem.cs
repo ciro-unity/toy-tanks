@@ -41,8 +41,6 @@ public class FireSystem : SystemBase
 					ECB.SetComponent<Rotation>(entityInQueryIndex, newProjectile, new Rotation{Value = worldRotation});
 					ECB.SetComponent<PhysicsVelocity>(entityInQueryIndex, newProjectile, new PhysicsVelocity{Linear = fireSpeed.Value * math.forward(worldRotation)});
 
-					ECB.AddComponent<EmitParticlesTag>(entityInQueryIndex, newProjectile); //this will create a particle system on spawn
-
 					fireCooldown.Value = fireInterval.Value;
 				}
 			}).ScheduleParallel();

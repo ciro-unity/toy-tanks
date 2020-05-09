@@ -49,6 +49,20 @@ MonoBehaviour:
     Tag05: 0
     Tag06: 0
     Tag07: 0
+--- !u!114 &3822576108137165426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8326243584017890553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e07606dadac44ed69b1f016b53cc346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creationParticleEffect: {fileID: 0}
+  destructionParticleEffect: {fileID: 2999620304692657164, guid: ab1c28d536e2848e49c926cb90f242f4, type: 3}
 --- !u!114 &5735514869032969666
 MonoBehaviour:
   m_ObjectHideFlags: 0

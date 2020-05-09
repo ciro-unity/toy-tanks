@@ -79,9 +79,16 @@ public struct Waypoint : IBufferElementData
 
 //------------------------------------   PARTICLES   ------------------------------------
 
-public struct EmitParticlesTag : ISystemStateComponentData { }
+public struct EmitParticlesOnCreationTag : IComponentData { }
+public struct EmitParticlesOnDestructionTag : ISystemStateComponentData { }
 
-public struct ParticleEffect : IComponentData
+public struct ParticleEffects : IComponentData
+{
+	public Entity CreationEffect;
+	public Entity DestructionEffect;
+}
+
+public struct ParticleEffectPreset : IComponentData
 {
 	public Entity ParticlePrefab;
 	public int NumberOfParticles;
