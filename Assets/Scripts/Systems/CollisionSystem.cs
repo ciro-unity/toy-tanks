@@ -50,8 +50,8 @@ public class CollisionSystem : JobComponentSystem
 			Entity entityA = triggerEvent.Entities.EntityA;
 			Entity entityB = triggerEvent.Entities.EntityB;
 
-			if(projectilesGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA);
-			if(projectilesGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB);
+			if(projectilesGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA); ECB.AddComponent<EmitParticlesTag>(entityA);
+			if(projectilesGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB); ECB.AddComponent<EmitParticlesTag>(entityB);
 
 			if(playersGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA);
 			if(playersGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB);
