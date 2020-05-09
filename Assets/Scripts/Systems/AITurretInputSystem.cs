@@ -29,7 +29,7 @@ public class AITurretInputSystem : SystemBase
         {
             var targets = new NativeArray<PosVel>(targetCount, Allocator.TempJob); //created as a native array so it can be passed to the job below
 
-            //find the player entity and compute its intended position for this frame
+            //find the player entity
             Entities
                 .WithAll<PlayerTag, BodyInput>()
                 .WithStoreEntityQueryInField(ref m_PlayerQuery)

@@ -16,7 +16,7 @@ public class TurretAuthoring : MonoBehaviour, IConvertGameObjectToEntity, IDecla
     {
 		dstManager.AddComponent<TurretInput>(entity);
 		dstManager.AddComponentData(entity, new FireInterval{Value = fireInterval});
-		dstManager.AddComponent<FireCooldown>(entity);
+		dstManager.AddComponentData<FireCooldown>(entity, new FireCooldown{Value = fireInterval});
 		dstManager.AddComponentData(entity, new FireSpeed{Value = fireSpeed});
 
 		//store a reference to the entity which represents the projectile Prefab

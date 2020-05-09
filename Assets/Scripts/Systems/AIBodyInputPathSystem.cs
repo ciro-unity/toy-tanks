@@ -21,7 +21,8 @@ public class AIBodyInputPathSystem : SystemBase
 				float3 nextPosition = waypoints[pathMovement.CurrentTargetWaypoint];
 
 				//check if the waypoint has been reached
-				if(math.lengthsq(translation.Value.xz - nextPosition.xz) < .1f)
+				float distanceSq = math.lengthsq(translation.Value.xz - nextPosition.xz);
+				if(distanceSq < .2f)
 				{
 					//waypoint reached
 					if(pathMovement.CurrentTargetWaypoint == waypoints.Length-1)
@@ -41,14 +42,19 @@ public class AIBodyInputPathSystem : SystemBase
 					}
 
 					nextPosition = waypoints[pathMovement.CurrentTargetWaypoint];
+
+					//instantly face next waypoint
+					//TODO: slowly rotate to face the waypoint (not writing to Rotation, but passing the correct BodyInput.Movement.x value)
+					float3 dir = math.normalize(nextPosition - translation.Value);
+					rotation.Value = quaternion.LookRotation(dir, math.up());
+
+					bodyInput.Movement = new float2(0f, .5f); //slow down
+				}
+				else
+				{
+					bodyInput.Movement = new float2(0f, math.clamp(bodyInput.Movement.y + 0.05f, 0f, 1f)); //accelerate
 				}
 
-				//check if facing the waypoint
-				float3 dir = math.normalize(nextPosition - translation.Value);
-				rotation.Value = quaternion.LookRotation(dir, math.up());
-
-				//compute the input needed to move to the next position
-				bodyInput.Movement = new float2(0f, 1f);
 			}).Schedule();
     }
 }

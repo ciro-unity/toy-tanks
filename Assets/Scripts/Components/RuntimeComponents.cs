@@ -3,6 +3,8 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 
+//------------------------------------   INPUT   ------------------------------------
+
 public struct BodyInput : IComponentData
 {
 	public float2 Movement;
@@ -13,6 +15,9 @@ public struct TurretInput : IComponentData
 	public float2 Target;
 	public bool Fire;
 }
+
+
+//------------------------------------   MOVEMENT OF TANKS   ------------------------------------
 
 public struct Velocity : IComponentData
 {
@@ -28,6 +33,9 @@ public struct RotationSpeed : IComponentData
 {
 	public float Value;
 }
+
+
+//------------------------------------   FIRING MECHANICS   ------------------------------------
 
 public struct FireCooldown : IComponentData
 {
@@ -55,6 +63,8 @@ public struct ProjectileSpawnPoint : IComponentData
 	public quaternion LocalRotation;
 }
 
+//------------------------------------   PATHS   ------------------------------------
+
 public struct PathMovement : IComponentData
 {
 	public Entity Path;
@@ -65,4 +75,24 @@ public struct PathMovement : IComponentData
 public struct Waypoint : IBufferElementData
 {
 	public float3 Position;
+}
+
+//------------------------------------   PARTICLES   ------------------------------------
+
+public struct EmitParticlesTag : ISystemStateComponentData { }
+
+public struct ParticleEffect : IComponentData
+{
+	public Entity ParticlePrefab;
+	public int NumberOfParticles;
+	public float2 InitialSpeedRange;
+	public float2 LifetimeRange;
+}
+
+public struct Particle : IComponentData
+{
+	public float Lifetime;
+	public float ElapsedTime;
+	public float3 MovementDirection;
+	public float Velocity;
 }
