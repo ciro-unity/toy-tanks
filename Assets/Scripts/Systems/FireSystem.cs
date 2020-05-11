@@ -8,16 +8,16 @@ using Unity.Physics;
 
 public class FireSystem : SystemBase
 {
-	private EndSimulationEntityCommandBufferSystem EndSimECBSystem;
+	private EntityCommandBufferSystem ECBSystem;
 
 	protected override void OnCreate()
 	{
-		EndSimECBSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+		ECBSystem = World.GetOrCreateSystem<BeginSimulationEntityCommandBufferSystem>();
 	}
 
 	protected override void OnUpdate()
 	{
-		EntityCommandBuffer.Concurrent ECB = EndSimECBSystem.CreateCommandBuffer().ToConcurrent();
+		EntityCommandBuffer.Concurrent ECB = ECBSystem.CreateCommandBuffer().ToConcurrent();
 		float deltaTime = Time.DeltaTime;
 
 		Entities
@@ -45,6 +45,6 @@ public class FireSystem : SystemBase
 				}
 			}).ScheduleParallel();
 
-		EndSimECBSystem.AddJobHandleForProducer(this.Dependency);
+		ECBSystem.AddJobHandleForProducer(this.Dependency);
 	}
 }
