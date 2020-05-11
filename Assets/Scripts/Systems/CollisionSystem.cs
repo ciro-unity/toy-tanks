@@ -5,6 +5,7 @@ using Unity.Physics.Systems;
 using Unity.Collections;
 using Unity.Mathematics;
 
+[UpdateAfter(typeof(StepPhysicsWorld))]
 public class CollisionSystem : JobComponentSystem
 {
     private BuildPhysicsWorld buildPhysicsWorld;
@@ -30,7 +31,7 @@ public class CollisionSystem : JobComponentSystem
 			ECB = EndSimECB,
         };
         var jobHandle = triggerJob.Schedule(stepPhysicsWorld.Simulation, ref buildPhysicsWorld.PhysicsWorld, inputDeps);
-        jobHandle.Complete();
+        EndSimECBSystem.AddJobHandleForProducer(jobHandle);
 
         return jobHandle;
     }
@@ -41,7 +42,7 @@ public class CollisionSystem : JobComponentSystem
         [ReadOnly]  public ComponentDataFromEntity<EnemyTag> enemiesGroup;
         [ReadOnly]  public ComponentDataFromEntity<ProjectileTag> projectilesGroup;
 		[ReadOnly]  public ComponentDataFromEntity<PlayerTag> playersGroup;
-		
+
 		public EntityCommandBuffer ECB;
 
         //This function will be called every time there is a trigger collision in the game
