@@ -65,6 +65,7 @@ public class ParticleSystem : SystemBase
 																					particleData.InitialSpeedRange.y)});
 					ECB.SetComponent<Translation>(entityInQueryIndex, newParticle, translation); //same position as the emitter
 					ECB.AddComponent<Scale>(entityInQueryIndex, newParticle, new Scale{Value = 0f});
+					ECB.RemoveComponent<NonUniformScale>(entityInQueryIndex, newParticle);
 				}
 
 				//remove the preset entity now that the particles have been spawned
@@ -87,7 +88,7 @@ public class ParticleSystem : SystemBase
 				{
 					//move and scale the particle
 					translation.Value += particle.MovementDirection * particle.Velocity * deltaTime;
-					scale.Value = math.sin((particle.ElapsedTime/particle.Lifetime) * math.PI);
+					scale.Value = math.sin((particle.ElapsedTime/particle.Lifetime) * math.PI) * 2f;
 				}
 			}).ScheduleParallel();
 
