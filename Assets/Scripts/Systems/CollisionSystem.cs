@@ -51,17 +51,28 @@ public class CollisionSystem : JobComponentSystem
 			Entity entityA = triggerEvent.Entities.EntityA;
 			Entity entityB = triggerEvent.Entities.EntityB;
 
-			ECB.AddComponent<EmitParticlesOnDestructionTag>(entityA);
-			ECB.AddComponent<EmitParticlesOnDestructionTag>(entityB);
+			if(projectilesGroup.HasComponent(entityA)
+				|| playersGroup.HasComponent(entityA)
+				|| enemiesGroup.HasComponent(entityA))
+			{
+				ECB.AddComponent<DestroyTag>(entityA);
+			}
 
-			if(projectilesGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA);
-			if(projectilesGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB);
+			if(projectilesGroup.HasComponent(entityB)
+				|| playersGroup.HasComponent(entityB)
+				|| enemiesGroup.HasComponent(entityB))
+			{
+				ECB.AddComponent<DestroyTag>(entityB);
+			}
 
-			if(playersGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA);
-			if(playersGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB);
+			// if(projectilesGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA);
+			// if(projectilesGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB);
 
-			if(enemiesGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA);
-			if(enemiesGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB);
+			// if(playersGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA);
+			// if(playersGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB);
+
+			// if(enemiesGroup.HasComponent(entityA)) ECB.DestroyEntity(entityA);
+			// if(enemiesGroup.HasComponent(entityB)) ECB.DestroyEntity(entityB);
         }
     }
 

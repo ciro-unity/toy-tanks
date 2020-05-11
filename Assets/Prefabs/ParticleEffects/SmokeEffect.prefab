@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 6414280338158972437, guid: dd75cb734111f4cb8ac541768b459a81, type: 3}
-  numberOfParticles: 10
-  initialSpeedRange: {x: 1, y: 3}
-  lifetimeRange: {x: 1, y: 3}
+  numberOfParticles: 20
+  initialSpeedRange: {x: 0.5, y: 2}
+  lifetimeRange: {x: 0.5, y: 3}

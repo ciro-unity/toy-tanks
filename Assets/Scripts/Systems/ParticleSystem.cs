@@ -21,32 +21,35 @@ public class ParticleSystem : SystemBase
 		Random random = new Random(1);
 		float deltaTime = Time.DeltaTime;
 
+
 		//creation of new particle systems
 		Entities
-			.WithAny<EmitParticlesOnCreationTag, EmitParticlesOnDestructionTag>()
+			.WithAll<EmitParticlesOnCreationTag>()
 			.ForEach((int entityInQueryIndex, Entity entity, ref ParticleEffects effects, in Translation translation) =>
 			{
-				Entity newEmitter = Entity.Null;
-
 				if(HasComponent<EmitParticlesOnCreationTag>(entity))
 				{
-					newEmitter = ECB.Instantiate(entityInQueryIndex, effects.CreationEffect);
+					Entity newEmitter = ECB.Instantiate(entityInQueryIndex, effects.CreationEffect);
+					ECB.SetComponent<Translation>(entityInQueryIndex, newEmitter, translation); //same position as the body that emitted it
 
-					//remove the component or the particles will spawn every frame!
+					//remove the tag or the particles will spawn every frame!
 					ECB.RemoveComponent<EmitParticlesOnCreationTag>(entityInQueryIndex, entity);
 				}
 
+			}).ScheduleParallel();
+
+
+		Entities
+			.WithAll<DestroyTag, EmitParticlesOnDestructionTag>()
+			.ForEach((int entityInQueryIndex, Entity entity, ref ParticleEffects effects, in Translation translation) =>
+			{
 				if(HasComponent<EmitParticlesOnDestructionTag>(entity))
 				{
-					newEmitter = ECB.Instantiate(entityInQueryIndex, effects.DestructionEffect);
-
-					//remove the System State Component, which will allow for the destruction of the entity
-					ECB.RemoveComponent<EmitParticlesOnDestructionTag>(entityInQueryIndex, entity);
+					Entity newEmitter = ECB.Instantiate(entityInQueryIndex, effects.DestructionEffect);
+					ECB.SetComponent<Translation>(entityInQueryIndex, newEmitter, translation); //same position as the body that emitted it
 				}
-
-				ECB.SetComponent<Translation>(entityInQueryIndex, newEmitter, translation); //same position as the body that emitted it
-
 			}).ScheduleParallel();
+
 
 
 		//if there's an emitter in the world, create all of its particles at once
@@ -72,6 +75,7 @@ public class ParticleSystem : SystemBase
 				ECB.DestroyEntity(entityInQueryIndex, entity);
 
 			}).ScheduleParallel();
+
 
 
 		//move and scale all particles in the world

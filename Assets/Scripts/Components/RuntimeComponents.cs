@@ -80,7 +80,7 @@ public struct Waypoint : IBufferElementData
 //------------------------------------   PARTICLES   ------------------------------------
 
 public struct EmitParticlesOnCreationTag : IComponentData { }
-public struct EmitParticlesOnDestructionTag : ISystemStateComponentData { }
+public struct EmitParticlesOnDestructionTag : IComponentData { }
 
 public struct ParticleEffects : IComponentData
 {
@@ -103,3 +103,7 @@ public struct Particle : IComponentData
 	public float3 MovementDirection;
 	public float Velocity;
 }
+
+//------------------------------------   LIFECYCLE   ------------------------------------
+
+public struct DestroyTag : IComponentData { }

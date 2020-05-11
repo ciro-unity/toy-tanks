@@ -4327,6 +4327,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building02
       objectReference: {fileID: 0}
+    - target: {fileID: 5631650566106165485, guid: 28c6a63bcd28047ae81ccf06dfff6a1f, type: 3}
+      propertyPath: m_Capsule.Height
+      value: 7.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 5631650566106165485, guid: 28c6a63bcd28047ae81ccf06dfff6a1f, type: 3}
+      propertyPath: m_Cylinder.Height
+      value: 7.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 5631650566106165485, guid: 28c6a63bcd28047ae81ccf06dfff6a1f, type: 3}
+      propertyPath: m_SphereRadius
+      value: 3.715
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c6a63bcd28047ae81ccf06dfff6a1f, type: 3}
 --- !u!4 &5128287875840588762 stripped
