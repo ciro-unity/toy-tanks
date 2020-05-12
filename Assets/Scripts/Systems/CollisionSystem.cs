@@ -11,12 +11,14 @@ public class CollisionSystem : JobComponentSystem
     private BuildPhysicsWorld buildPhysicsWorld;
     private StepPhysicsWorld stepPhysicsWorld;
 	private EndSimulationEntityCommandBufferSystem EndSimECBSystem;
+	private EndFramePhysicsSystem EndFramePhysicsSystem;
 
     protected override void OnCreate()
     {
         buildPhysicsWorld = World.GetOrCreateSystem<BuildPhysicsWorld>();
         stepPhysicsWorld = World.GetOrCreateSystem<StepPhysicsWorld>();
 		EndSimECBSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+		EndFramePhysicsSystem = World.GetOrCreateSystem<EndFramePhysicsSystem>();
     }
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
@@ -32,6 +34,7 @@ public class CollisionSystem : JobComponentSystem
         };
         var jobHandle = triggerJob.Schedule(stepPhysicsWorld.Simulation, ref buildPhysicsWorld.PhysicsWorld, inputDeps);
         EndSimECBSystem.AddJobHandleForProducer(jobHandle);
+        EndFramePhysicsSystem.HandlesToWaitFor.Add(jobHandle);
 
         return jobHandle;
     }
